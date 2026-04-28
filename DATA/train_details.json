@@ -1,0 +1,46 @@
+{
+    "89250": {
+        "train_name": "Muz Dlh Exp",
+        "train_time": "17:35:00",
+        "stations": {
+            "muzaffarpur": 0.0,
+            "gorakhpur": 293.0,
+            "lucknow": 272.0,
+            "kanpur": 72.0,
+            "new delhi": 440.0
+        },
+        "time_tr": [
+            0.0,
+            4.883333333333334,
+            4.533333333333333,
+            1.2,
+            7.333333333333333
+        ],
+        "total_time": "17:57:00",
+        "total_distance": "1077.0",
+        "fare": "150.78"
+    },
+    "50687": {
+        "train_name": "HAMSAFAR",
+        "train_time": "09:40:00",
+        "stations": {
+            "darbhanga": 0.0,
+            "muzaffarpur": 90.0,
+            "gorakhpur": 293.0,
+            "lucknow": 272.0,
+            "kanpur": 72.0,
+            "new delhi": 440.0
+        },
+        "time_tr": [
+            0.0,
+            1.2,
+            3.9066666666666667,
+            3.6266666666666665,
+            0.96,
+            5.866666666666666
+        ],
+        "total_time": "15:33:36",
+        "total_distance": "1167.0",
+        "fare": "163.38000000000002"
+    }
+}

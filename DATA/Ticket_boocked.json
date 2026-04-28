@@ -1,0 +1,29 @@
+{
+    "456576161300": {
+        "train_number": "89250",
+        "train_name": "Muz Dlh Exp",
+        "from": "muzaffarpur",
+        "to": "kanpur",
+        "distance": 72.0,
+        "fare": 144.0,
+        "status": "Booked"
+    },
+    "997398654176": {
+        "train_number": "89250",
+        "train_name": "Muz Dlh Exp",
+        "from": "gorakhpur",
+        "to": "new delhi",
+        "distance": 784.0,
+        "fare": 109.76,
+        "status": "Booked"
+    },
+    "327921012776": {
+        "train_number": "50687",
+        "train_name": "HAMSAFAR",
+        "from": "kanpur",
+        "to": "new delhi",
+        "distance": 440.0,
+        "fare": 61.60000000000001,
+        "status": "Booked"
+    }
+}
