@@ -1,20 +1,17 @@
-🚆 Ticket Booking System (Python)
-A simple command-line based Ticket Booking System built using Python.
-This project allows users to create accounts, login, view trains, book tickets, and manage travel history. It also includes an Admin panel for managing trains and fares.
-
-A good README acts as the first impression of your project and helps users understand how to use it effectively 
+🚆 Train Ticket Booking System (Python)
+A console-based Train Ticket Booking System built using Python and Object-Oriented Programming (OOP) principles. This project allows users to create accounts, login, view trains, book tickets, and manage bookings, while admins can manage train data.
 
 📌 Features
 👤 User Features
-Create account (User/Admin)
+Create account with validation
 
-Login system with authentication
+Secure login system (password hashing 🔒)
 
 View available trains
 
-Book tickets
+Book tickets with PNR generation
 
-Calculate fare automatically
+Calculate fare based on distance
 
 View booking history
 
@@ -23,128 +20,135 @@ Add new trains
 
 Update train timings
 
-Update stations & routes
+Modify train stations
 
-Set fare per km
+Calculate/update fare
 
 Delete trains
 
-🧱 Project Structure
-Ticket Booking System/
-│
-├── main.py                  # Main entry point
-├── module/
-│   ├── create_account.py    # Account creation
-│   ├── login_admin.py       # Admin panel
-│   ├── login_user.py        # User panel
-│   ├── file_function.py     # File handling (JSON)
-│
-│   └── user_module/
-│       ├── booking_panal.py
-│       ├── calculate_fare.py
-│       ├── show_history.py
-│       ├── Show_train.py
-│
-└── DATA/
-    ├── accounts.json
-    ├── train_details.json
-    ├── ticket_history.json
-    └── Ticket_boocked.json
+🧠 Project Structure
+📦 Ticket Booking System
+ ┣ 📂 module
+ ┃ ┣ 📂 user_module
+ ┃ ┃ ┣ booking_panal.py
+ ┃ ┃ ┣ calculate_fare.py
+ ┃ ┃ ┣ show_history.py
+ ┃ ┃ ┗ Show_train.py
+ ┃ ┣ create_account.py
+ ┃ ┣ login_admin.py
+ ┃ ┣ login_user.py
+ ┃ ┗ file_function.py
+ ┣ main.py
+ ┗ DATA (JSON files)
 ⚙️ How It Works
-The system uses JSON files to store data such as:
-
-Accounts
-
-Train details
-
-Booking history
-
-Tickets
-
-A centralized file handler (file_function.py) manages all read/write operations
-→ Example: 
+🔐 Authentication System
+Users create accounts with validation (age, email, password rules) 
 
 
-The main program (main.py) controls user flow:
-→ Example: 
+Passwords are stored using SHA-256 hashing for security
+
+Admin access requires special credentials
+
+💾 Data Management
+All data is stored in JSON files:
+
+accounts.json
+
+train_details.json
+
+ticket_history.json
+
+Ticket_boocked.json
+
+Centralized file handling ensures safe read/write operations 
 
 
-🚀 Getting Started
-1. Clone the repository
-git clone https://github.com/your-username/ticket-booking-system.git
-cd ticket-booking-system
-2. Run the project
+🎫 Booking System
+User selects train and stations
+
+Distance is calculated dynamically (excluding starting station) 
+
+
+Fare is computed using:
+
+fare = distance × 0.14
+Unique PNR is generated for each booking 
+
+
+🚉 Train Management (Admin)
+Add train with:
+
+Stations
+
+Distance between stations
+
+Travel time
+
+Automatic calculation of:
+
+Total distance
+
+Journey time
+
+Fare 
+
+
+▶️ How to Run
+Clone the repository:
+
+git clone https://github.com/your-username/train-ticket-booking.git
+cd train-ticket-booking
+Run the main file:
+
 python main.py
-🖥️ Usage
-Main Menu
-1. Create Account
-2. Login Account
-3. Exit
-After Login
-User Panel
+🧪 Example Workflow
+Create account
+
+Login as user/admin
+
+View trains
 
 Book ticket
 
-View history
+Check booking history
 
-Admin Panel
+🔑 Key Concepts Used
+Object-Oriented Programming (OOP)
 
-Add / Update / Delete trains
+File Handling (JSON)
 
-Manage fare
+Password Hashing (Security)
 
-💰 Fare Calculation Logic
-Distance is calculated between selected stations
+Modular Programming
 
-Fare is calculated as:
+Input Validation
 
-Fare = Distance × 0.14
-→ Implementation: 
+Error Handling
 
+🚀 Future Improvements
+GUI using Tkinter / PyQt
 
-📂 Data Storage
-All data is stored locally using JSON:
+Database integration (MySQL / SQLite)
 
-Safe loading with error handling
-
-Automatic file creation if missing
-
-Integer key conversion for IDs
-
-⚠️ Requirements
-Python 3.x
-
-No external libraries required (pure Python)
-
-🧠 Future Improvements
-GUI version (Tkinter / Web app)
-
-Online database (MySQL / Firebase)
-
-Payment integration
+Online payment integration
 
 Seat selection system
 
-Multi-user session handling
-
-🤝 Contributing
-Contributions are welcome!
-
-Fork the repo
-
-Create a new branch
-
-Make changes
-
-Submit a pull request
-
-📄 License
-This project is open-source and available under the MIT License.
+API-based real-time train data
 
 👨‍💻 Author
 Abdullah
 
-B.Tech Student
+Python Developer
 
-Interested in Python, AI & Software Development
+Interested in AI & Software Development
+
+⭐ Support
+If you like this project:
+
+⭐ Star the repository
+
+🍴 Fork it
+
+🧑‍💻 Contribute
 
