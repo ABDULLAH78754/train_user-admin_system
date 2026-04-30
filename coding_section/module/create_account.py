@@ -1,80 +1,142 @@
-import random
 import json
-import module.file_function as file_function
+import random
+import os
+import hashlib
+import module.file_function as file_function  # Importing the unified file management module
 
-Admin_Id=6556
-Admin_pin=1212
+class SaveData:
+    
+    def save(self, account):
+        # Create file if not exists
+        if not os.path.exists(file_function.ACCOUNTS_FILE):
+            with open(file_function.ACCOUNTS_FILE, 'w') as f:
+                json.dump({}, f)  # Start with an empty dict
 
+        # Save data
+        file_function.accounts[str(account.account_number)] = {
+            "name": account.name,
+            "age": account.age,
+            "phone": account.phone,
+            "email": account.email,
+            "id_proof": account.id_proof,
+            "address": account.address,
+            "password": self.hash_password(account.password),  # 🔒 hashed
+            "account_type": Account_type(account.account_type)
+        }
 
-#Save account details function
+        
 
+        print("💾 Data saved successfully!")
 
-def main():
+    def hash_password(self, password):
+        return hashlib.sha256(password.encode()).hexdigest()
 
-    accounts = file_function.accounts
-    print("1. Admin account")
-    print("2. User account")
-
-    B=int(input("Enter here:"))
-            #Admine account creating section
-    if B==1:
-        C=int(input("Enter pre define Id:"))
-        D=int(input("Enter pre define pin:"))
-                #admin account section
-        if C==Admin_Id and D==Admin_pin:
-            print("Enter your details:")
-            account_name=input("Enter your Name:")
-            age=int(input("Enter your age:"))
-            if age>=18:
-                ID_PROOF=int(input("Enter your Id number:"))
-                phone_no = int(input("Enter your phone number:"))
-                Password=input("Create password:")
-                Account_type="Admin"
-                account_number=random.randint(10**11,10**12)
-                print(f"Login ID:{account_number}")
-                accounts[account_number] = {
-                    "name": account_name,
-                    "age": age,
-                    "pin": Password,
-                    "phone": phone_no,
-                    "id_proof": ID_PROOF,
-                    "Account_ty": Account_type 
-                    }
-                         # Save to file
-                file_function.save_json_data(accounts, file_function.ACCOUNTS_FILE)
-
-                print("Your account created successfully!.")
-            else:
-                print("You are not eligible due to your age.")
+def Account_type(account_type):
+    if account_type == 1:
+        Admin_Id = 655655
+        Admin_Pin = 123456
+        Id_A=int(input("Enter Admin ID: "))
+        Pin_A=int(input("Enter Admin PIN: "))
+        if Id_A == Admin_Id and Pin_A == Admin_Pin:
+            return "Admin"
         else:
-            print("Invalid details.")
-            #user account
-    elif B==2:
-        print("Enter your details:")
-        account_name=input("Enter your Name:")
-        age=int(input("Enter your age:"))
-        if age>=18:
-            ID_PROOF=int(input("Enter your Id number:"))
-            phone_no = int(input("Enter your phone number:"))
-            Password=input("Enter Password:")
-            Account_type="User"
-            account_number=random.randint(10**11,10**12)
-            print(f"LOGIN ID:{account_number}")
-            accounts[account_number] = {
-                "name": account_name,
-                "age": age,
-                "pin": Password,
-                "phone": phone_no,
-                "id_proof": ID_PROOF,
-                "Account_ty": Account_type
-                }
-                         # Save to file
-            file_function.save_json_data(accounts, file_function.ACCOUNTS_FILE)
-
-            print("Your account created successfully!.")
-        else:
-            print("You are not eligible due to your age.")
+            return "Unknown"
+    elif account_type == 2:
+        return "User"
     else:
-        print("Invalid option.")
+        return "Unknown"
+
+class Account:
+    def __init__(self):
+        self.name = ""
+        self.age = 0
+        self.phone = ""
+        self.email = ""
+        self.id_proof = ""
+        self.address = ""
+        self.password = ""
+        self.account_number = random.randint(10**11, 10**12 - 1)
+        self.account_type = ""
+
+    def take_input(self):
+        self.name = input("Enter your name: ")
+        self.age = int(input("Enter your age: "))
+        self.phone = input("Enter your phone number: ")
+        self.email = input("Enter your email: ")
+        self.id_proof = input("Enter your ID proof: ")
+        self.address = input("Enter your address: ")
+        self.password = input("Enter your password: ")
+        self.account_type = int(input("Enter your account type(Admin - 1, User - 2): "))
+        self.account_type = Account_type(self.account_type)  # Set account type
+
+
+    def validate(self):
+        valid = True
+
+        if self.age < 18:
+            print("❌ You are not eligible.")
+            valid = False
+
+        if len(self.password) < 8 or len(self.password) > 16:
+            print("❌ Password must be 8–16 characters.")
+            valid = False
+
+        if not any(c.isupper() for c in self.password):
+            print("❌ Add uppercase letter.")
+            valid = False
+
+        if not any(c.islower() for c in self.password):
+            print("❌ Add lowercase letter.")
+            valid = False
+
+        if not any(c.isdigit() for c in self.password):
+            print("❌ Add a number.")
+            valid = False
+
+        if not any(c in "!@#$%^&*()-_=+[]{}|;:,.<>?/" for c in self.password):
+            print("❌ Add special character.")
+            valid = False
+
+        if not self.email.endswith("@gmail.com"):
+            print("❌ Invalid email.")
+            valid = False
+
+        if not (len(self.phone) == 10 and self.phone.isdigit()):
+            print("❌ Invalid phone.")
+            valid = False
+
+        if not (self.id_proof.isdigit() and len(self.id_proof) == 12):
+            print("❌ Invalid ID.")
+            valid = False
+
+        return valid
+
+    def display(self):
+        print("\n✅ Account Details:")
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("Phone:", self.phone)
+        print("Email:", self.email)
+        print("ID Proof:", self.id_proof)
+        print("Address:", self.address)
+        print("Account Number:", self.account_number)
+
+
+# Main Program
+def main():
+    print("Welcome to the account creation process.")
+    user = Account()
+    user.take_input()
+
+    if user.validate():
+        print("\n🎉 Account created successfully!")
+    
+        saver = SaveData()
+        saver.save(user)   # ✅ moved here
+    
+        user.display()
+    else:
+        print("\n⚠️ Fix errors and try again.")
+
 if __name__ == "__main__":
     main()

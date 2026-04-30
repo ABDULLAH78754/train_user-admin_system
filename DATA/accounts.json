@@ -7,14 +7,8 @@
         "id_proof": 271310278635,
         "Account_ty": "Admin"
     },
-    "253474960034": {
-        "name": "ABDULLAH",
-        "age": 18,
-        "pin": "ABDULLAH",
-        "phone": 9262987273,
-        "id_proof": 271310278635,
-        "Account_ty": "Admin"
-    },
+
+    
     "142596591993": {
         "name": "Abubakar",
         "age": 79,
@@ -22,21 +16,6 @@
         "phone": 674588398434,
         "id_proof": 12345,
         "Account_ty": "User"
-    },
-    "121584145109": {
-        "name": "ABDULLAH",
-        "age": 21,
-        "pin": "ABDULLAH",
-        "phone": 9262987273,
-        "id_proof": 271310278635,
-        "Account_ty": "User"
-    },
-    "163425720994": {
-        "name": "ABDULLAH",
-        "age": 21,
-        "pin": "ABDULLAH-200",
-        "phone": 9262987273,
-        "id_proof": 271310278635,
-        "Account_ty": "User"
     }
+
 }
