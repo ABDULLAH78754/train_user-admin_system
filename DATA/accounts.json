@@ -7,8 +7,6 @@
         "id_proof": 271310278635,
         "Account_ty": "Admin"
     },
-
-    
     "142596591993": {
         "name": "Abubakar",
         "age": 79,
@@ -16,6 +14,15 @@
         "phone": 674588398434,
         "id_proof": 12345,
         "Account_ty": "User"
+    },
+    "742531971558": {
+        "name": "ABDULLAH",
+        "age": 21,
+        "phone": "9262987273",
+        "email": "abdullah240804@gmail.com",
+        "id_proof": "264466484531",
+        "address": "sumera afzalpur",
+        "password": "c9cc7662cef02cab0732d51c3e4818f18c6d05a05adc2d3a39bc58df44083037",
+        "account_type": "Admin"
     }
-
 }

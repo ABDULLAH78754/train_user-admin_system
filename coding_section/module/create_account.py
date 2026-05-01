@@ -7,44 +7,35 @@ import module.file_function as file_function  # Importing the unified file manag
 class SaveData:
     
     def save(self, account):
-        # Create file if not exists
-        if not os.path.exists(file_function.ACCOUNTS_FILE):
-            with open(file_function.ACCOUNTS_FILE, 'w') as f:
-                json.dump({}, f)  # Start with an empty dict
-
-        # Save data
-        file_function.accounts[str(account.account_number)] = {
+        file_function.accounts[account.account_number] = {
             "name": account.name,
             "age": account.age,
             "phone": account.phone,
             "email": account.email,
             "id_proof": account.id_proof,
             "address": account.address,
-            "password": self.hash_password(account.password),  # 🔒 hashed
-            "account_type": Account_type(account.account_type)
+            "password": self.hash_password(account.password),
+            "account_type": account.account_type
         }
 
-        
-
-        print("💾 Data saved successfully!")
+        file_function.save_json_data(file_function.accounts, file_function.ACCOUNTS_FILE)
 
     def hash_password(self, password):
         return hashlib.sha256(password.encode()).hexdigest()
 
-def Account_type(account_type):
+
+def Account_type(account_type, admin_id=None, admin_pin=None):
     if account_type == 1:
-        Admin_Id = 655655
-        Admin_Pin = 123456
-        Id_A=int(input("Enter Admin ID: "))
-        Pin_A=int(input("Enter Admin PIN: "))
-        if Id_A == Admin_Id and Pin_A == Admin_Pin:
+        if admin_id == 6556556 and admin_pin == 123456:
             return "Admin"
         else:
+            print("❌ Invalid Admin credentials")
             return "Unknown"
     elif account_type == 2:
         return "User"
     else:
         return "Unknown"
+    
 
 class Account:
     def __init__(self):
@@ -67,7 +58,12 @@ class Account:
         self.address = input("Enter your address: ")
         self.password = input("Enter your password: ")
         self.account_type = int(input("Enter your account type(Admin - 1, User - 2): "))
-        self.account_type = Account_type(self.account_type)  # Set account type
+        if self.account_type == 1:
+            admin_id = int(input("Enter Admin ID: "))
+            admin_pin = int(input("Enter Admin PIN: "))
+            self.account_type = Account_type(self.account_type, admin_id, admin_pin)
+        else:
+            self.account_type = Account_type(self.account_type)  # Set account type
 
 
     def validate(self):
